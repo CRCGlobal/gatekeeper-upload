@@ -5,7 +5,7 @@ cur=conn.cursor()
 cur.execute("SELECT id, datetime_capture, camera_id, path_full_image, path_crop_dot_number, path_crop_dot_text, candidate_number_1, candidate_number_2, candidate_number_3, candidate_number_4, candidate_number_5, candidate_conf_1, candidate_conf_2, candidate_conf_3, candidate_conf_4, candidate_conf_5, conf_txdot_text, conf_usdot_text, box_dot_number_left, box_dot_number_right, box_dot_number_top, box_dot_number_bottom, box_dot_text_left, box_dot_text_right, box_dot_text_top, box_dot_text_bottom FROM localscans WHERE datetime_sync IS NULL")
 uplist=cur.fetchall()
 for record in uplist:
-	payload={'cameraid':capture['camera_id'],'dotnum'=capture['candidate_number_1']}
+	payload={'cameraid':capture['camera_id'],'dotnum':capture['candidate_number_1']}
 	uploadfile = {'imagefile': open(capture['path_full_image'] ,'rb')}
 	try:
                response = requests.post('http://tc.crc.global/kennercamera/api.php', data=payload, files=uploadfile)

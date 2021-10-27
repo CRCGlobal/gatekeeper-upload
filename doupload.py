@@ -10,4 +10,5 @@ for record in uplist:
 	try:
 		response = requests.post('http://tc.crc.global/kennercamera/api.php', data=payload, files=uploadfile)
 		print(payload)
+		print(record['id'])
 		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL"),(record['id'],))

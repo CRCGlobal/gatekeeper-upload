@@ -6,7 +6,8 @@ cur.execute("SELECT id, datetime_capture, camera_id, path_full_image, path_crop_
 uplist=cur.fetchall()
 for record in uplist:
 	payload={'cameraid':record['camera_id'],'dotnum':record['candidate_number_1']}
-	uploadfile = {'imagefile': open(record['path_full_image'] ,'rb')}
+	filename=record['path_full_image'].replace('tmp/images_dot_queue','results/images_truck')
+	uploadfile = {'imagefile': open(filename ,'rb')}
 	try:
 		response = requests.post('http://tc.crc.global/kennercamera/api.php', data=payload, files=uploadfile)
 		print(payload)

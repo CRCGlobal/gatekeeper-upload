@@ -26,4 +26,3 @@ for record in uplist:
 		print(response.text)
 		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL",(record['id'],))
 	except Exception as e: print(e)
-	input('go again?')

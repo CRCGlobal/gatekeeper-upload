@@ -12,4 +12,4 @@ for record in uplist:
 		print(payload)
 		print(record['id'])
 		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL",(record['id'],))
-		print(cur)
+	except Exception as e: print(e)

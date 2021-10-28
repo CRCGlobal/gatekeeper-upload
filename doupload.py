@@ -9,8 +9,8 @@ for record in uplist:
 	filename=record['path_full_image'].replace('tmp/images_dot_queue','results/images_truck')
 	uploadfile = {'imagefile': open(filename ,'rb')}
 	try:
-		response = requests.post('http://tc.crc.global/kennercamera/api.php', data=payload, files=uploadfile)
+#		response = requests.post('http://tc.crc.global/crcgatekeeper/api.php', data=payload, files=uploadfile)
 		print(payload)
 		print(record['id'])
-		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL",(record['id'],))
+#		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL",(record['id'],))
 	except Exception as e: print(e)

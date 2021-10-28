@@ -19,9 +19,11 @@ for record in uplist:
 	payload['confidence5'] = record['candidate_conf_5']
 	try:
 		uploadfile = {'imagefile': open(filename ,'rb')}
-		response = requests.post('http://tc.crc.global/crcgatekeeper/api.php', data=payload, files=uploadfile)
-		print(payload)
 		print(record['id'])
+		print(payload)
+		response = requests.post('http://tc.crc.global/crcgatekeeper/api.php', data=payload, files=uploadfile)
+		print(response)
+		print(response.text)
 		cur.execute("UPDATE localscans SET datetime_sync=now() WHERE id=%s AND datetime_sync IS NULL",(record['id'],))
 	except Exception as e: print(e)
 	input('go again?')
